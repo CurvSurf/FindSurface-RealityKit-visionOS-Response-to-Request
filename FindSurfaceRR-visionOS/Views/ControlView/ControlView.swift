@@ -57,7 +57,8 @@ struct ControlView: View {
         VStack {
             Section {
                 VStack(alignment: .leading) {
-                    FeatureTypePicker(type: $findSurface.targetFeature)
+                    FeatureTypePicker(type: $findSurface.targetFeature,
+                                      allowAny: allowFeatureTypeAny)
                         .onChange(of: allowFeatureTypeAny) {
                             if !allowFeatureTypeAny && findSurface.targetFeature == .any {
                                 findSurface.targetFeature = .plane

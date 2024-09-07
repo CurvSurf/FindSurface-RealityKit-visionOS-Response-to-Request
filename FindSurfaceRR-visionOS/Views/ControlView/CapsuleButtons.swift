@@ -78,6 +78,7 @@ fileprivate struct CapsuleImageButton: View {
                 .preference(key: StringMaxLengthPreferenceKey.self, value: minLength)
         }
         .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
         .background(Capsule().stroke(.white, lineWidth: 1))
         .hoverEffect(.highlight)
     }
@@ -176,6 +177,7 @@ fileprivate struct CapsuleImageToggleButton: View {
         }
         .toggleStyle(.button)
         .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
         .background(Capsule().stroke(.white, lineWidth: 1))
         .hoverEffect(.highlight)
     }

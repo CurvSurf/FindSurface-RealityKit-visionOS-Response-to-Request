@@ -382,6 +382,7 @@ struct ImmersiveView: View {
             StatusView()
                 .environment(sceneManager)
                 .environment(timer)
+                .frame(width: 320)
         }
         
         Attachment(id: Attachments.confirm) {

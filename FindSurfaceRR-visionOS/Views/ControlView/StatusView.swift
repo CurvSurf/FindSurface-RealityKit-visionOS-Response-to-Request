@@ -35,7 +35,6 @@ struct StatusView: View {
         )
         .background(RoundedRectangle(cornerRadius: 8).stroke(.white, lineWidth: 1))
         .padding(.top)
-        .frame(width: 320)
     }
 }
 

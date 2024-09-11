@@ -15,13 +15,13 @@ final class AxisIndicator: Entity {
         
         let (origin, xAxis, yAxis, zAxis) = {
             let origin = Submesh.generateSphere(radius: 0.005)
-            let pillar = Submesh.generateCylinder(radius: 0.003, length: 0.045)
-            let hat = Submesh.generateCone(topRadius: 0, bottomRadius: 0.005, length: 0.025)
+            let arrowbody = Submesh.generateCylinder(radius: 0.003, length: 0.041)
+            let arrowhead = Submesh.generateCone(topRadius: 0, bottomRadius: 0.005, length: 0.025)
             
-            let yHat = hat.translated(y: 0.045)
-            let yPillar = pillar.translated(y: 0.0225)
+            let arrowheadY = arrowhead.translated(y: 0.0575)
+            let arrowbodyY = arrowbody.translated(y: 0.0245)
             
-            let yAxis = yHat + yPillar
+            let yAxis = arrowheadY + arrowbodyY
             let xAxis = yAxis.rotated(angle: .pi * 0.5, axis: .init(0, 0, 1))
             let zAxis = yAxis.rotated(angle: .pi * 0.5, axis: .init(1, 0, 0))
             

@@ -115,14 +115,14 @@ On `FindSurface` tab, you can adjust the parameters of FindSurface. For the mean
 
 On `Behaviors` tab, options that can change the app's behavior are listed.
 
-- `Complete partial torus` and `Threshold [degrees]` convert the torus segment into a full torus when the angle exceeds a threshold. The threshold is set to 270 degree by default and any torus segments having the tube angle of more than 270 degrees will be converted to a full torus.
+- `Complete partial torus` and `Threshold [°]` convert the torus segment into a full torus when the angle exceeds a threshold. The threshold is set to 270° by default and any torus segments having the tube angle of more than 270° will be converted to a full torus.
 
 - `Cap conical frustum` and `Threshold [percentage]` convert the conical frustum into a cone by adding a vertex point if the ratio of the top radius to the bottom radius is less than a threshold. The threshold is set to 10% by default and any conical frustums having the top radius/bottom radius ratio less than 10% will be converted to a cone.
 
 - `Adjust Device Anchor direction`: Lower the center-of-sight indicator (the black sphere) on the screen.
-    > **Note**: While testing our app, we realized that when wearing the Apple Vision Pro, looking directly at the center of the sight (toward the negative Z axis of DeviceAnchor's `originFromAnchorTransform`) can cause eye strain by making users raise their eyes, despite individual differences. Considering advice from ISO ergonomics standards 9241-5, which recommend a -35 degree angle from the rest angle, we have added an option to adjust this direction from 0° to 25° downward."
+    > **Note**: While testing our app, we realized that when wearing the Apple Vision Pro, looking directly at the center of the sight (toward the negative Z axis of DeviceAnchor's `originFromAnchorTransform`) can cause eye strain by making users raise their eyes, despite individual differences. Considering advice from ISO ergonomics standards 9241-5, which recommend a -35° from the rest angle, we have added an option to adjust this direction from 0° to 25° downward.
 
-- `Preview Invocation Frequency` adjusts the invocation frequency of FindSurface's `Preview mode`. This means the app tries sampling the geometry in the given `sampling-per-second`.
+- `Preview Invocation Frequency` adjusts the invocation frequency of FindSurface's `Preview mode`. This means the app tries detecting the geometry in the given `sampling-per-second`.
 
 - `Targeting method in Off-line mode` determines how to pick the seed point location when you spatial tap when `Preview mode` is disabled. `Device` means it will perform exactly the same way of `Preview mode`. `User` means it will perform exactly the same way as [FindSurface-RealityKit-visionOS](https://github.com/CurvSurf/FindSurface-RealityKit-visionOS#findsurface-realitykit-visionos) app does (i.e., where the user stares). `None` means it will ignore the gesture.
 
@@ -141,7 +141,7 @@ On `Graphics & Rendering` tab, you can adjust the following settings:
 
 - `Enable Hand Joints Entities` renders cube entities representing each of joints on your hand. This option is debug purpose only to check if hand anchor is correctly tracked.
 
-- `Visible Hands` determines which hands are to be rendered by the option above.
+- `Visible Hand` determines which hand is to be rendered by the option above.
 
 - `Status View Position`: This option allows you to move the status view (displays fps and the number of points) to the following positions with user-defined offset:
     - `Control`: The status view is displayed in Control window. (default)

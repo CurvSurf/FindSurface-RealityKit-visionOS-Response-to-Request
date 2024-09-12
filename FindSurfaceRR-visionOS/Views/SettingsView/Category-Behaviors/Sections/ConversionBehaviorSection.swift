@@ -33,7 +33,7 @@ struct ConversionBehaviorSection: View {
                                        lowerbound: 0,
                                        upperbound: 360)
                 } label: {
-                    CaptionedLabel(title: "Threshold [degrees]")
+                    CaptionedLabel(title: "Threshold [°]")
                 }
             }
             

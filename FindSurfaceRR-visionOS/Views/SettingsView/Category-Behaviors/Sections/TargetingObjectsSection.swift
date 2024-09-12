@@ -30,7 +30,7 @@ struct TargetingObjectsSection: View {
                     Text("25°")
                 }
             } label: {
-                CaptionedLabel(title: "Adjust Direction Angle [degrees]",
+                CaptionedLabel(title: "Adjust Direction Angle [°]",
                                caption: "Tilts DeviceAnchor's forward direction vertically (the positive angle tilts the forward vector to downward).")
             }
             

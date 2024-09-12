@@ -60,7 +60,7 @@ fileprivate struct AppTitle: View {
 fileprivate struct IntroductionText: View {
     var body: some View {
         
-        Text("Find and measure 3D surface geometries in your physical environment with **real-time** preview.")
+        Text("Find and measure 3D surface geometries in your physical environment with continuous preview.")
             .font(.subheadline)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 30)

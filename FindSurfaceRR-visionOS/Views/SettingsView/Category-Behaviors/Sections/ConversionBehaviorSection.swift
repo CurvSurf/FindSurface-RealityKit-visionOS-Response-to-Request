@@ -50,7 +50,7 @@ struct ConversionBehaviorSection: View {
                                   upperbound: 100) {
                     PercentageStepperDialog(value: binding)
                 } label: {
-                    CaptionedLabel(title: "Threshold [percentage]")
+                    CaptionedLabel(title: "Threshold [%]")
                 }
             }
         }

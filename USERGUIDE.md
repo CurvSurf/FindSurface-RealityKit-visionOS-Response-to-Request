@@ -117,7 +117,7 @@ On `Behaviors` tab, options that can change the app's behavior are listed.
 
 - `Complete partial torus` and `Threshold [°]` convert the torus segment into a full torus when the angle exceeds a threshold. The threshold is set to 270° by default and any torus segments having the tube angle of more than 270° will be converted to a full torus.
 
-- `Cap conical frustum` and `Threshold [percentage]` convert the conical frustum into a cone by adding a vertex point if the ratio of the top radius to the bottom radius is less than a threshold. The threshold is set to 10% by default and any conical frustums having the top radius/bottom radius ratio less than 10% will be converted to a cone.
+- `Cap conical frustum` and `Threshold [%]` convert the conical frustum into a cone by adding a vertex point if the ratio of the top radius to the bottom radius is less than a threshold. The threshold is set to 10% by default and any conical frustums having the top radius/bottom radius ratio less than 10% will be converted to a cone.
 
 - `Adjust Device Anchor direction`: Lower the center-of-sight indicator (the black sphere) on the screen.
     > **Note**: While testing our app, we realized that when wearing the Apple Vision Pro, looking directly at the center of the sight (toward the negative Z axis of DeviceAnchor's `originFromAnchorTransform`) can cause eye strain by making users raise their eyes, despite individual differences. Considering advice from ISO ergonomics standards 9241-5, which recommend a -35° from the rest angle, we have added an option to adjust this direction from 0° to 25° downward.

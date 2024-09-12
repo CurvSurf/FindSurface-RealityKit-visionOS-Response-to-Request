@@ -28,12 +28,12 @@ struct CaptionedLabel: View {
             if let caption {
                 Text(caption)
                     .padding(.trailing)
-                    .frame(width: 500, alignment: .leading)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .minimumScaleFactor(0.5)
             }
         }
+        .frame(width: 500, alignment: .leading)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
     }

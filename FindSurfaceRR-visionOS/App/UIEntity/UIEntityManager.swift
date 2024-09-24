@@ -389,7 +389,7 @@ final class UIEntityManager {
               statusPosition == .wrist,
               let devicePosition = deviceTransform?.position else { return }
               
-        guard let wristTransform = leftHand.jointTransform(.wrist) else {
+        guard let wristTransform = leftHand.jointTransform(.forearmWrist) else {
             statusEntity.isEnabled = false
             return
         }

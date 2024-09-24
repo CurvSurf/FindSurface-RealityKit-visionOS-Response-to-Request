@@ -265,7 +265,7 @@ final class ImmersiveState {
                                    from: indicator.position,
                                    relativeTo: nil,
                                    forward: .positiveZ)
-                    let radius = min(max(initialRadius * Float(value.magnification), 0.001), 0.75)
+                    let radius = min(max(initialRadius * Float(value.magnification), 0.05), 10)
                     findSurface.seedRadius = radius
                     uiEntityManager.seedAreaIndicator.radius = radius
                     uiEntityManager.seedAreaControl.radius = radius

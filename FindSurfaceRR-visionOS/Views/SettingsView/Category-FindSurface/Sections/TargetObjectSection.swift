@@ -21,15 +21,15 @@ struct TargetObjectSection: View {
             
             let radiusBinding = $findSurface.seedRadius.mapMeterToCentimeter()
             NumericTextField(value: radiusBinding,
-                              lowerbound: 1,
+                              lowerbound: 5,
                               upperbound: 1000) {
                 LengthStepperDialog(value: radiusBinding,
-                                    lowerbound: 1,
+                                    lowerbound: 5,
                                     upperbound: 1000,
                                     includeMeters: true)
             } label: {
                 CaptionedLabel(title: "Seed Radius [cm]",
-                               caption: "The radius of a seed region around the seed point where FindSurface starts searching for the surface. Acceptable range is from 1 (1 cm) to 1000 (10 m).")
+                               caption: "The radius of a seed region around the seed point where FindSurface starts searching for the surface. Acceptable range is from 5 (5 cm) to 1000 (10 m).")
             }
         }
     }

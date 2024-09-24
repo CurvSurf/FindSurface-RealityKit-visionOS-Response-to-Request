@@ -1,5 +1,5 @@
 //
-//  MeasurementSection.swift
+//  InputDataPointsSection.swift
 //  FindSurfaceRR-visionOS
 //
 //  Created by CurvSurf-SGKim on 8/26/24.
@@ -10,13 +10,13 @@ import SwiftUI
 
 import FindSurface_visionOS
 
-struct MeasurementSection: View {
+struct InputDataPointsSection: View {
     
     @Environment(FindSurface.self) private var findSurface
     
     var body: some View {
         @Bindable var findSurface = findSurface
-        Section("Measurement") {
+        Section("Input Data Points") {
             
             let accuracyBinding = $findSurface.measurementAccuracy.mapMeterToCentimeter()
             NumericTextField(value: accuracyBinding,

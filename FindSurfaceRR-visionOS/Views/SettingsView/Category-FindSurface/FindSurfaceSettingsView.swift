@@ -16,7 +16,7 @@ struct FindSurfaceSettingsView: View {
     
     var body: some View {
         List {
-            MeasurementSection()
+            InputDataPointsSection()
             TargetObjectSection()
             RegionGrowingSection()
             SmartConversionSection()

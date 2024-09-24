@@ -56,7 +56,7 @@
 		F3D764A92C89D1EB00CA331C /* TargetingObjectsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764332C89D1EB00CA331C /* TargetingObjectsSection.swift */; };
 		F3D764AA2C89D1EB00CA331C /* BehaviorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764352C89D1EB00CA331C /* BehaviorSettingsView.swift */; };
 		F3D764AB2C89D1EB00CA331C /* ExperimentalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764372C89D1EB00CA331C /* ExperimentalSection.swift */; };
-		F3D764AC2C89D1EB00CA331C /* MeasurementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764382C89D1EB00CA331C /* MeasurementSection.swift */; };
+		F3D764AC2C89D1EB00CA331C /* InputDataPointsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764382C89D1EB00CA331C /* InputDataPointsSection.swift */; };
 		F3D764AD2C89D1EB00CA331C /* RegionGrowingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764392C89D1EB00CA331C /* RegionGrowingSection.swift */; };
 		F3D764AE2C89D1EB00CA331C /* SmartConversionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7643A2C89D1EB00CA331C /* SmartConversionSection.swift */; };
 		F3D764AF2C89D1EB00CA331C /* TargetObjectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7643B2C89D1EB00CA331C /* TargetObjectSection.swift */; };
@@ -167,7 +167,7 @@
 		F3D764332C89D1EB00CA331C /* TargetingObjectsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetingObjectsSection.swift; sourceTree = "<group>"; };
 		F3D764352C89D1EB00CA331C /* BehaviorSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorSettingsView.swift; sourceTree = "<group>"; };
 		F3D764372C89D1EB00CA331C /* ExperimentalSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalSection.swift; sourceTree = "<group>"; };
-		F3D764382C89D1EB00CA331C /* MeasurementSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementSection.swift; sourceTree = "<group>"; };
+		F3D764382C89D1EB00CA331C /* InputDataPointsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataPointsSection.swift; sourceTree = "<group>"; };
 		F3D764392C89D1EB00CA331C /* RegionGrowingSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionGrowingSection.swift; sourceTree = "<group>"; };
 		F3D7643A2C89D1EB00CA331C /* SmartConversionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartConversionSection.swift; sourceTree = "<group>"; };
 		F3D7643B2C89D1EB00CA331C /* TargetObjectSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetObjectSection.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D764372C89D1EB00CA331C /* ExperimentalSection.swift */,
-				F3D764382C89D1EB00CA331C /* MeasurementSection.swift */,
+				F3D764382C89D1EB00CA331C /* InputDataPointsSection.swift */,
 				F3D764392C89D1EB00CA331C /* RegionGrowingSection.swift */,
 				F3D7643A2C89D1EB00CA331C /* SmartConversionSection.swift */,
 				F3D7643B2C89D1EB00CA331C /* TargetObjectSection.swift */,
@@ -824,7 +824,7 @@
 				F3D764B72C89D1EB00CA331C /* CaptionedLabel.swift in Sources */,
 				F3D764B82C89D1EB00CA331C /* CheckboxToggle.swift in Sources */,
 				F3D764902C89D1EB00CA331C /* Submesh.swift in Sources */,
-				F3D764AC2C89D1EB00CA331C /* MeasurementSection.swift in Sources */,
+				F3D764AC2C89D1EB00CA331C /* InputDataPointsSection.swift in Sources */,
 				F3D764D52C89D1EB00CA331C /* simd_quatf.swift in Sources */,
 				F3D764C02C89D1EB00CA331C /* ImmersiveView.swift in Sources */,
 				F3D764CB2C89D1EB00CA331C /* AnimationSystem.swift in Sources */,

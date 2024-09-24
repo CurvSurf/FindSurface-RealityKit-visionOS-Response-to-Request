@@ -4,13 +4,13 @@
 
 ## Inspector Window
 
-Inspector window shows you the information about geometries that you've found and the log messages about the events happened in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
+Inspector window shows you the information about geometries that you've found and the log messages about the events occurred in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
 
 ![inspector-window.png](images/inspector-window.png)
 
 On `Geometries` tab, you'll see the list of detected geometries. Each item shows the name and the summary of the geometry it represents.
 - Clicking on the item will expand the panel showing the detailed description of the geometry.
-- Long-clicking (pinching and holding) will reveal the delete button allowing to remove the geometry separately.
+- Long-clicking (pinching and holding) will reveal the delete button allowing to remove the geometry individually.
 - The button on the top right corner (with the trash bin icon) removes all the geometries at once, after showing a confirmation dialog.
 
 ![log-message-window.png](images/log-message-window.png)

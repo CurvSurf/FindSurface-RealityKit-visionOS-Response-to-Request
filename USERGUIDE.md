@@ -35,7 +35,7 @@ The device will start scanning your physical environment and generate mesh ancho
 
 ![controls-window.png](images/controls-window.png)
 
-Controls window provides you with app controls that you will frequently access while using the app. It will be displayed on the right side of your sight and can be relocated by pinching with your middle finger and thumb of your right hand.
+Controls window provides you with app controls that you will frequently access while using the app. It will be displayed on the right side of your sight and can be relocated by pinching with the middle finger and thumb of your right hand.
 
 - Feature type picker: The five shape icons are the feature types that can be selected to search for using FindSurface.
 
@@ -63,13 +63,13 @@ The toggle buttons, which will be described below, show the current state of the
 
 ### Inspector Window
 
-Inspector window shows you the information about geometries that you've found and the log messages about the events happened in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
+Inspector window shows you the information about geometries that you've found and the log messages about the events occurred in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
 
 ![inspector-window.png](images/inspector-window.png)
 
 On `Geometries` tab, you'll see the list of detected geometries. Each item shows the name and the summary of the geometry it represents.
 - Clicking on the item will expand the panel showing the detailed description of the geometry.
-- Long-clicking (pinching and holding) will reveal the delete button allowing to remove the geometry separately.
+- Long-clicking (pinching and holding) will reveal the delete button allowing to remove the geometry individually.
 - The button on the top right corner (with the trash bin icon) removes all the geometries at once, after showing a confirmation dialog.
 
 ![log-message-window.png](images/log-message-window.png)

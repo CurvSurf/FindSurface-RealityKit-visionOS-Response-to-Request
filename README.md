@@ -35,7 +35,7 @@ The device will start scanning your physical environment and generate mesh ancho
 
 ![controls-window.png](images/controls-window.png)
 
-Controls window provides you with app controls that you will frequently access while using the app. It will be displayed on the right side of your sight and can be relocated by pinching with your middle finger and thumb of your right hand.
+Controls window provides you with app controls that you will frequently access while using the app. It will be displayed on the right side of your sight and can be relocated by pinching with the middle finger and thumb of your right hand.
 
 - Feature type picker: The five shape icons are the feature types that can be selected to search for using FindSurface.
 

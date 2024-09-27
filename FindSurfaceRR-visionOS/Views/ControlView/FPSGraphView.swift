@@ -13,6 +13,7 @@ struct FPSGraphView: View {
     let queue: Queue<Double>
     let lowerbound: Double
     let upperbound: Double
+    let unlimited: Bool
     
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
@@ -53,9 +54,9 @@ struct FPSGraphView: View {
             }
             
             VStack {
-                Text("90 Hz")
-                Text("60 Hz")
-                Text("30 Hz")
+                Text("\(unlimited ? 300 : 90) Hz")
+                Text("\(unlimited ? 200 : 60) Hz")
+                Text("\(unlimited ? 100 : 30) Hz")
             }
             .font(.footnote)
             .foregroundStyle(.blue)

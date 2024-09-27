@@ -24,7 +24,12 @@ struct FindSurfaceRR_visionOSApp: App {
     
     init() {
         let previewFrequency: PreviewSamplingFrequency = UserDefaults.Adapter<WorldTrackingManager.DefaultKey>().enum(forKey: .previewSamplingFrequency) ?? .k90Hz
-        let timer = FoundTimer(eventsCount: (previewFrequency.rawValue / 10) + 1)
+        let eventsCount = if case .unlimited = previewFrequency {
+            15
+        } else {
+            (previewFrequency.rawValue / 10) + 1
+        }
+        let timer = FoundTimer(eventsCount: eventsCount)
         self._timer = State(initialValue: timer)
     }
     
@@ -50,6 +55,16 @@ struct FindSurfaceRR_visionOSApp: App {
                 .environment(timer)
                 .environment(logger)
                 .trackingScenePhase(by: scenePhaseTracker, sceneID: .immersiveSpace)
+                .onChange(of: worldTrackingManager.previewSamplingFrequency) { oldValue, newValue in
+                    if oldValue != newValue {
+                        let eventsCount = if case .unlimited = newValue {
+                            15
+                        } else {
+                            (newValue.rawValue / 10) + 1
+                        }
+                        timer.resize(eventsCount: eventsCount)
+                    }
+                }
         }
         
         WindowGroup(sceneID: SceneID.settings, for: SceneID.self) { _ in

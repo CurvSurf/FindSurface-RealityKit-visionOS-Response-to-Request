@@ -12,6 +12,7 @@ struct StatusView: View {
     
     @Environment(FoundTimer.self) private var timer
     @Environment(SceneReconstructionManager.self) private var sceneManager
+    @Environment(WorldTrackingManager.self) private var worldManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -30,7 +31,8 @@ struct StatusView: View {
         .background(
             FPSGraphView(queue: timer.fpsRecords,
                          lowerbound: 0.0,
-                         upperbound: 120.0)
+                         upperbound: worldManager.previewSamplingFrequency == .unlimited ? 400 : 120,
+                         unlimited: worldManager.previewSamplingFrequency == .unlimited)
             .padding(1)
         )
         .background(RoundedRectangle(cornerRadius: 8).stroke(.white, lineWidth: 1))

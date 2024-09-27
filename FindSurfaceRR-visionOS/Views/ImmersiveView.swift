@@ -31,13 +31,25 @@ final class ImmersiveState {
         
     }
     
+    private func updatePreview() async {
+        while Task.isCancelled == false {
+            await performFindSurfaceForPreview()
+        }
+    }
+    
     func restartPreviewUpdateLoop(refreshRate: PreviewSamplingFrequency) {
         if let previewTask {
             previewTask.cancel()
         }
-        previewTask = Task {
-            await run(withFrequency: UInt64(refreshRate.rawValue)) { [self] in
-                await performFindSurfaceForPreview()
+        previewTask = if case .unlimited = refreshRate {
+            Task {
+                await updatePreview()
+            }
+        } else {
+            Task {
+                await run(withFrequency: UInt64(refreshRate.rawValue)) { [self] in
+                    await performFindSurfaceForPreview()
+                }
             }
         }
     }

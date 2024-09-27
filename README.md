@@ -63,7 +63,7 @@ The toggle buttons, which will be described below, show the current state of the
 
 ### Inspector Window
 
-Inspector window shows you the information about geometries that you've found and the log messages about the events happened in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
+Inspector window shows you the information about geometries that you've found and the log messages about the events occurred in the app. You can switch the tabs using the buttons on the ornament on the left side of the window.
 
 See [this document](inspector-window.md) for details.
 

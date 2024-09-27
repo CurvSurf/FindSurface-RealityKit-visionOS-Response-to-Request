@@ -73,7 +73,6 @@ final class ImmersiveState {
             return
         }
         
-        // TODO: display triangle highlight
         await uiEntityManager.triangleHighlighter.updateTriangle(points.0, points.1, points.2)
         
         let location = hit.position
@@ -90,6 +89,12 @@ final class ImmersiveState {
             return (meshPoints, index)
         }
 
+        // NOTE: We had used the commented code below (prepending the ray-casted location)
+        //          for the simplicity of implementation.
+        //       However, we decided to use the code above,
+        //          because it makes more sense to pick the seed point
+        //          from the actual measurement data (measured points)
+        //          instead of making one up, which is calculated by ray-casting algorithm.
 //        guard let location = await sceneManager.raycast(origin: origin,
 //                                                        direction: direction)?.position else {
 //            await worldManager.updatePreviewEntity(.none(0),

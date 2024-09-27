@@ -19,9 +19,8 @@ struct TargetingObjectsSection: View {
             
             let angleBinding = $worldManager.deviceDirectionVerticalBias.mapRadianToDegree()
             NumericTextField(value: angleBinding,
-                              
-                              lowerbound: 0,
-                              upperbound: 25) {
+                             lowerbound: 0,
+                             upperbound: 25) {
                 SliderDialog(value: angleBinding, in: 0...25, step: 1) {
                     Text("Value: \(angleBinding.wrappedValue)°")
                 } minimumValueLabel: {

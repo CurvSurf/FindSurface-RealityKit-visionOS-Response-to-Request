@@ -51,7 +51,7 @@ extension WorldTrackingManager {
         areInlierPointVisible = storage.bool(forKey: .shouldShowInlierPoints) ?? false
         useDeviceAnchorBias = storage.bool(forKey: .useDeviceAnchorBias) ?? true
         devicePositionBias = storage.simd(forKey: .devicePositionBias) ?? .zero
-        deviceDirectionVerticalBias = storage.float(forKey: .deviceDirectionVerticalBias) ?? 0
+        deviceDirectionVerticalBias = storage.float(forKey: .deviceDirectionVerticalBias) ?? 10
         enableFullTorusConversion = storage.bool(forKey: .enableFullTorusConversion) ?? true
         fullTorusAngleThreshold = storage.float(forKey: .fullTorusAngleThreshold) ?? .pi * 1.5
         enableFullConeConversion = storage.bool(forKey: .enableFullConeConversion) ?? true
@@ -131,7 +131,7 @@ extension FindSurface {
     func loadFromUserDefaults() {
         let storage = UserDefaults.Adapter<DefaultKey>()
         measurementAccuracy = storage.float(forKey: .measurementAccuracy) ?? 0.015
-        meanDistance = storage.float(forKey: .meanDistance) ?? 0.10
+        meanDistance = storage.float(forKey: .meanDistance) ?? 0.15
         seedRadius = storage.float(forKey: .seedRadius) ?? 0.15
         lateralExtension = storage.enum(forKey: .lateralExtension) ?? .lv10
         radialExpansion = storage.enum(forKey: .radialExpansion) ?? .lv5

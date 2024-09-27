@@ -115,6 +115,7 @@
 		F3D764E62C89E03200CA331C /* SliderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764E52C89E03200CA331C /* SliderDialog.swift */; };
 		F3D764EA2C8AD60D00CA331C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764E92C8AD60D00CA331C /* Queue.swift */; };
 		F3D764EC2C8AD62100CA331C /* FPSGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D764EB2C8AD62100CA331C /* FPSGraphView.swift */; };
+		F3FD1D1E2CA6B0B400CD2FE3 /* TriangleHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD1D1D2CA6B0AB00CD2FE3 /* TriangleHighlighter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +227,7 @@
 		F3D764E52C89E03200CA331C /* SliderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDialog.swift; sourceTree = "<group>"; };
 		F3D764E92C8AD60D00CA331C /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		F3D764EB2C8AD62100CA331C /* FPSGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSGraphView.swift; sourceTree = "<group>"; };
+		F3FD1D1D2CA6B0AB00CD2FE3 /* TriangleHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleHighlighter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 		F3D7640A2C89D1EB00CA331C /* UIEntity */ = {
 			isa = PBXGroup;
 			children = (
+				F3FD1D1D2CA6B0AB00CD2FE3 /* TriangleHighlighter.swift */,
 				F3D764072C89D1EB00CA331C /* SeedAreaControl.swift */,
 				F3D764082C89D1EB00CA331C /* SeedAreaIndicator.swift */,
 				F3D764092C89D1EB00CA331C /* UIEntityManager.swift */,
@@ -801,6 +804,7 @@
 				F3D764BF2C89D1EB00CA331C /* ConversionPromptView.swift in Sources */,
 				F3D764C32C89D1EB00CA331C /* UserGuideView.swift in Sources */,
 				F3D764AD2C89D1EB00CA331C /* RegionGrowingSection.swift in Sources */,
+				F3FD1D1E2CA6B0B400CD2FE3 /* TriangleHighlighter.swift in Sources */,
 				F3D764E22C89D1EB00CA331C /* RestartGuideView.swift in Sources */,
 				F3D764D02C89D1EB00CA331C /* ViewAttachmentEntity.swift in Sources */,
 				F3D764C62C89D1EB00CA331C /* SessionManager.swift in Sources */,
@@ -984,6 +988,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Debug;
 		};
@@ -1011,6 +1016,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
 			name = Release;
 		};

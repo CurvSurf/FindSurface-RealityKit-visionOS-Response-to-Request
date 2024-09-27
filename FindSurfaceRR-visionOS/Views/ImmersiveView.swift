@@ -59,29 +59,49 @@ final class ImmersiveState {
         let findSurface = FindSurface.instance
         guard let devicePosition = worldManager.devicePosition,
               let deviceDirection = worldManager.deviceDirection else { return }
-              
-        guard worldManager.previewEnabled else {
-            await worldManager.updatePreviewEntity(.none(0),
-                                                   location: devicePosition + deviceDirection)
-            return
-        }
-        
+            
         let targetFeature = findSurface.targetFeature
         
         let origin = devicePosition
         let direction = deviceDirection
         
-        guard let location = await sceneManager.raycast(origin: origin,
-                                                        direction: direction)?.position else {
+        guard let hit = await sceneManager.raycast(origin: origin, direction: direction),
+              let points = await sceneManager.pickNearestTriangleVertices(hit) else {
             await worldManager.updatePreviewEntity(.none(0),
                                                    location: origin + direction)
             timer.record(found: false)
             return
         }
         
-        let result = try? await findSurface.perform {
-            return ([location] + sceneManager.meshPoints, 0)
+        // TODO: display triangle highlight
+        await uiEntityManager.triangleHighlighter.updateTriangle(points.0, points.1, points.2)
+        
+        let location = hit.position
+        
+        guard worldManager.previewEnabled else {
+            await worldManager.updatePreviewEntity(.none(0),
+                                                   location: location)
+            return
         }
+  
+        let result = try? await findSurface.perform {
+            let meshPoints = sceneManager.meshPoints
+            guard let index = meshPoints.firstIndex(of: points.0) else { return nil }
+            return (meshPoints, index)
+        }
+
+//        guard let location = await sceneManager.raycast(origin: origin,
+//                                                        direction: direction)?.position else {
+//            await worldManager.updatePreviewEntity(.none(0),
+//                                                   location: origin + direction)
+//            timer.record(found: false)
+//            return
+//        }
+//        
+//        let result = try? await findSurface.perform {
+//            return ([location] + sceneManager.meshPoints, 0)
+//        }
+        
         
         guard var result else {
             return
@@ -144,42 +164,39 @@ final class ImmersiveState {
               worldManager.offlinePreviewTarget != .disabled else { return }
         
         let origin = devicePosition
-        let direction = deviceDirection
+        let direction = worldManager.offlinePreviewTarget == .whereUserStares ? normalize(location - origin) : deviceDirection
         
-        var hitPosition: simd_float3? = nil
-        var hitNormal: simd_float3? = nil
-        
-        switch worldManager.offlinePreviewTarget {
-        case .whereUserStares:
-            hitPosition = location
-            hitNormal = await sceneManager.raycast(origin: origin,
-                                                   direction: normalize(location - origin))?.normal
-        case .whereDeviceLooks:
-            let hit = await sceneManager.raycast(origin: origin,
-                                                 direction: direction)
-            hitPosition = hit?.position
-            hitNormal = hit?.normal
-            
-        default: fatalError()
-        }
-        
-        guard let hitPosition else {
+        guard let hit = await sceneManager.raycast(origin: origin, direction: direction),
+              let points = await sceneManager.pickNearestTriangleVertices(hit) else {
             AudioServicesPlaySystemSound(1053)
             return
         }
         
+//        switch worldManager.offlinePreviewTarget {
+//        case .whereUserStares:
+//            hitPosition = location
+//            hitNormal = await sceneManager.raycast(origin: origin,
+//                                                   direction: normalize(location - origin))?.normal
+//        case .whereDeviceLooks:
+//            let hit = await sceneManager.raycast(origin: origin,
+//                                                 direction: direction)
+//            hitPosition = hit?.position
+//            hitNormal = hit?.normal
+//            
+//        default: fatalError()
+//        }
+        
         let result = try await findSurface.perform {
-            if let hitNormal {
-                await uiEntityManager.flashSeedAreaIndicator(at: hitPosition,
-                                                             withNormal: hitNormal,
-                                                             seedRadius: findSurface.seedRadius)
-            }
             
-            await uiEntityManager.flashGesturePointIndicator(at: hitPosition)
+            await uiEntityManager.flashSeedAreaIndicator(at: hit.position,
+                                                         withNormal: hit.normal,
+                                                         seedRadius: findSurface.seedRadius)
+            
+            await uiEntityManager.flashGesturePointIndicator(at: hit.position)
             // TODO: show pointcloud (optional)
-            let points = sceneManager.meshPoints
-            
-            return ([hitPosition] + points, 0)
+            let meshPoints = sceneManager.meshPoints
+            guard let index = meshPoints.firstIndex(of: points.0) else { return nil }
+            return (meshPoints, index)
         }
         
         guard var result else {
@@ -435,6 +452,9 @@ struct ImmersiveView: View {
         }
         .task {
             await uiEntityManager.updateAnchors()
+        }
+        .onChange(of: worldManager.previewEnabled, initial: true) {
+            uiEntityManager.triangleHighlighter.isEnabled = !worldManager.previewEnabled
         }
         .onChange(of: worldManager.previewSamplingFrequency, initial: true) {
             state.restartPreviewUpdateLoop(refreshRate: worldManager.previewSamplingFrequency)

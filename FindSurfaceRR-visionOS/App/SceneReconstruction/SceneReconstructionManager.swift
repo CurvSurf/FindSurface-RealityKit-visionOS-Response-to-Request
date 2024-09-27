@@ -34,6 +34,7 @@ final class SceneReconstructionManager {
     
     init() {
         let rootEntity = Entity()
+        rootEntity.name = "Scene Reconstruction Root"
         
         self.rootEntity = rootEntity
     }
@@ -71,7 +72,7 @@ final class SceneReconstructionManager {
         anchors.insert(anchor)
         entities[anchor.id] = entity
         
-        updatePoints(anchor.worldPositions, forKey: anchor.id)
+        updatePoints(anchor.worldPositions, faces: anchor.faces, forKey: anchor.id)
         
         playUpdateAnimation(entity, forKey: anchor.id)
     }
@@ -89,7 +90,7 @@ final class SceneReconstructionManager {
         entity.model = ModelComponent(mesh: mesh, materials: materials)
         entity.transform = Transform(matrix: anchor.originFromAnchorTransform)
         entity.collision?.shapes = [shape]
-        updatePoints(anchor.worldPositions, forKey: anchor.id)
+        updatePoints(anchor.worldPositions, faces: anchor.faces, forKey: anchor.id)
         
         stopUpdateAnimation(entity, forKey: anchor.id)
         playUpdateAnimation(entity, forKey: anchor.id)
@@ -102,7 +103,7 @@ final class SceneReconstructionManager {
         
         anchors.remove(anchor)
         entity.removeFromParent()
-        updatePoints(nil, forKey: anchor.id)
+        updatePoints(nil, faces: nil, forKey: anchor.id)
         
         stopUpdateAnimation(entity, forKey: anchor.id)
     }
@@ -134,23 +135,34 @@ final class SceneReconstructionManager {
     
     // - MARK: Pointcloud
     private var pointMap: [UUID: [simd_float3]] = [:]
+    private var faceMap: [UUID: [(Int, Int, Int)]] = [:]
     var meshPoints: [simd_float3] {
         pointMap.values.flatMap { $0 }
     }
     private(set) var pointCount: Int = 0
     
-    private func updatePoints(_ points: [simd_float3]?, forKey key: UUID) {
+    private func updatePoints(_ points: [simd_float3]?,
+                              faces: [UInt32]?,
+                              forKey key: UUID) {
         
-        guard let points else {
-            if let removed = pointMap.removeValue(forKey: key) {
-                pointCount -= removed.count
+        guard let points,
+              let faces else {
+            if let removedPoints = pointMap.removeValue(forKey: key) {
+                pointCount -= removedPoints.count
             }
+            faceMap.removeValue(forKey: key)
             return
         }
         
         if let removed = pointMap.updateValue(points, forKey: key) {
             pointCount -= removed.count
         }
+        faceMap.updateValue(faces.chunks(ofCount: 3).map {
+            let v0 = Int($0[$0.startIndex])
+            let v1 = Int($0[$0.startIndex + 1])
+            let v2 = Int($0[$0.startIndex + 2])
+            return (v0, v1, v2)
+        }, forKey: key)
         pointCount += points.count
     }
     
@@ -176,6 +188,30 @@ final class SceneReconstructionManager {
     // - MARK: Ray casting
     func raycast(origin: simd_float3, direction: simd_float3) async -> CollisionCastHit? {
         return await rootEntity.scene?.raycast(origin: origin, direction: direction, query: .nearest).first
+    }
+    
+    func pickNearestTriangleVertices(_ hit: CollisionCastHit) async -> (simd_float3, simd_float3, simd_float3)? {
+        guard let triangleHit = hit.triangleHit else { return nil }
+        
+        let bc = triangleHit.uv
+        let triangleIndex = triangleHit.faceIndex
+        
+        guard let id = await UUID(uuidString: hit.entity.name),
+              let points = pointMap[id],
+              let faces = faceMap[id] else {
+            return nil
+        }
+        
+        let face = faces[triangleIndex]
+        let vertices = [points[face.0], points[face.1], points[face.2]]
+        
+        let location = hit.position
+        
+        let result = zip(vertices, vertices.map { distance_squared($0, location) }).sorted { lhs, rhs in
+            lhs.1 < rhs.1
+        }.map { $0.0 }
+        
+        return (result[0], result[1], result[2])
     }
 }
 

@@ -76,6 +76,9 @@ final class UIEntityManager {
         axisIndicator.isEnabled = false
         rootEntity.addChild(axisIndicator)
         
+        let triangleHighlighter = TriangleHighlighter()
+        rootEntity.addChild(triangleHighlighter)
+        
         self.rootEntity = rootEntity
         self.hands = hands
         self.leftHand = leftHand
@@ -84,6 +87,7 @@ final class UIEntityManager {
         self.seedAreaControl = seedAreaControl
         self.gesturePointIndicator = gesturePointIndicator
         self.axisIndicator = axisIndicator
+        self.triangleHighlighter = triangleHighlighter
     }
     
     let rootEntity: Entity
@@ -473,6 +477,9 @@ final class UIEntityManager {
         
         axisIndicator.transform = Transform(matrix: transform * translation * rotation)
     }
+    
+    
+    let triangleHighlighter: TriangleHighlighter
 }
 
 enum OfflinePreviewTarget: Int {

@@ -21,7 +21,7 @@ On `FindSurface` tab, you can adjust the parameters of FindSurface. For the mean
 
     > **Note**: In `visionOS`, due to the fact that the only option available to obtain depth data is vertex points of the mesh anchors, `Measurement Accuracy` and `Mean Distance` are virtually fixed. Thus, they are initially set to [the optimal values](https://github.com/CurvSurf/FindSurface-visionOS#optimal-parameter-set-for-apple-vision-pro) that we have found after tested on various circumstances. You might not need to change them in most cases.
 
-- `Seed Radius` means the radius of a seed region around the seed point where FindSurface starts searching for the surface. Acceptable range is from 5 (5 cm) to 1000 (10 m). This parameter should be set to an appropriate value depending on the approximate size of the target object. For convenience, you can adjust this parameter by the magnification gesture (pinching with the index finger and thumb of both hands and moving apart or closer.)
+- `Seed Radius` means the radius of a seed region around the seed point where FindSurface starts searching for the surface. Acceptable range is from 5 (5 cm) to 1000 (10 m). This parameter should be set to an appropriate value depending on the approximate size of the target object. For convenience, you can adjust this parameter by the magnification gesture (pinching with the index finger and thumb of both hands and moving apart or closer) with staring at meshes.
 
 - `Lateral Extension` means the tendency for the algorithm to spread its search space in lateral (tangential) direction of the surface to be detected or measured.
 

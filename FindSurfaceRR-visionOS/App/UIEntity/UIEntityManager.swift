@@ -407,7 +407,8 @@ final class UIEntityManager {
         
         let offset = statusWristAnchorOffset
         
-        let position = wristPosition + basisX * offset.x + basisY * offset.y + basisZ * offset.z
+        let _position = wristPosition + basisX * offset.x + basisY * offset.y + basisZ * offset.z
+        let position = statusEntity.position * 0.9 + _position * 0.1
         
         statusEntity.look(at: devicePosition, from: position, relativeTo: nil, forward: .positiveZ)
     }

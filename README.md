@@ -11,6 +11,8 @@ This app introduces `Preview mode` that makes it continuously invoke FindSurface
 
 As mentioned in [here](https://github.com/CurvSurf/FindSurface-visionOS#overview), FindSurface-visionOS limits the number of input points to less than 50k.
 
+> **NOTE:** This project has been upgraded to require visionOS 2.0 to improve the performance of entity updates. If you cannot use visionOS 2.0, please refer to the tag [`visionOS1.3`](https://github.com/CurvSurf/FindSurface-RealityKit-visionOS-Response-to-Request/tree/visionOS1.3) instead.
+
 ## Requirements
 
 The app runs on an Apple Vision Pro (visionOS 1.2+) device only, and requires your permissions to track your hands and to scan your environment (world sensing) to operate as intended. Dialogs asking the permissions will be prompted upon launching the app.
